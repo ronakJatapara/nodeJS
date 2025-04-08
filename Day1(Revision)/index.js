@@ -38,6 +38,11 @@ app.get("/",(req,res)=>{
     res.render("index2",{students})
 })
 
+app.get("/deleteData",(req,res)=>{
+    console.log(req.body);
+    
+
+})
 
 app.listen(port,(err)=>{
     err ? console.log(err) : console.log("port startded on port :  " + port)

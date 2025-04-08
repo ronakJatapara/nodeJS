@@ -15,7 +15,7 @@
         
      </form>
 
-<table>
+<table border="1">
     <thead>
         <tr>
             <th>ID</th>
@@ -32,8 +32,8 @@
               <td><%=e.id%></td>
               <td><%=e.name%></td>
               <td><%=e.subject%></td>
-              <td><a href=""><button>Edit</button></a></td>
-              <td><a href=""><button>Delete</button></a></td>
+              <td><a href="/editData?id<%=e.id%>"><button>Edit</button></a></td>
+              <td><a href="/deleteData?id<%=e.id%>"><button>Delete</button></a></td>
 
 
            </tr>
@@ -43,3 +43,8 @@
 
 </body>
 </html>
+
+
+<!-- mangoose.connect("mongodb://127.0.0.1/Node5to6") -->
+
+
