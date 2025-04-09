@@ -24,8 +24,32 @@ app.post("/addData",async(req,res)=>{
     await schema.create(req.body).then(()=>{
         res.redirect("/")
     })
+    
 })
 
+app.get("/deleteData",async(req,res)=>{
+    await schema.findByIdAndDelete(req.query.id).then(()=>{
+        res.redirect("/")
+    })
+    // console.log(req.query);
+    
+})
+
+app.get("/editData",async(req,res)=>{
+
+    
+
+    await schema.findById(req.query.id).then((data)=>{
+        res.render("editform",{data})
+    })
+
+})
+
+app.post("/updateData",async(req,res)=>{
+    await schema.findByIdAndUpdate(req.body.id,req.body).then(()=>{
+        res.redirect("/")
+    })    
+})
 
 app.listen(port,(err)=>{
     err ? console.log(err) : console.log("Server started on port : " + port);

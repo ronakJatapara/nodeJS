@@ -24,6 +24,7 @@ const port = 1007;
 const app = express()
 
 app.set("view engine", "ejs")
+app.use(express.urlencoded({extended:true}))
 
 
 let students = [
@@ -39,7 +40,7 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/deleteData",(req,res)=>{
-    console.log(req.body);
+   
     
 
 })
