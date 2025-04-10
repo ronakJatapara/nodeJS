@@ -36,7 +36,7 @@ app.get("/deleteData",async(req,res)=>{
 })
 
 app.get("/editData",async(req,res)=>{
-
+    
     
 
     await schema.findById(req.query.id).then((data)=>{
