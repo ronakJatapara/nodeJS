@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* #box1{
+    box-shadow: 2px 2px 5px black;
+} */
+
+
+
+.card{
+    position: relative;
+    /* width: 300px; */
+    height: 200px;
+
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .1);
+    transition: transform 0.3s ease;
+    /* position: relative; */
+    border: 1px solid red;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+  }
+
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+    transition: background-color 0.3s ease;
+  }
+
+  .card:hover::after {
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay on hover */
+  }
+.card-body{
+    position: relative;
+}
+  .card-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    padding: 20px;
+  }
+
+  .card-content h3 {
+    margin: 0 0 5px;
+  }
+
+  .card-content small {
+    opacity: 0.8;
+  }
+
+  .card-content .badge {
+    margin-top: 10px;
+    display: inline-block;
+    background: #28a745;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+
+  .card-content button {
+    margin-top: 15px;
+    padding: 6px 12px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .card-content button:hover {
+    background-color: #0849c3;
+  }
+
+  #btn1,
+  #btn2 {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    z-index: 2; 
+    transition:  .7s;
+    color: white;
+  }
+  
+  #btn1 {
+    background-color: red;
+    left: -60px;
+  }
+  
+  .card:hover #btn1 {
+    left: 120px;
+  }
+  
+  #btn2 {
+    background-color: rgb(12, 92, 212);
+    right: -60px;
+  }
+  
+  .card:hover #btn2 {
+    right: 120px;
+  }
+  
+  #btn1:hover,
+  #btn2:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
