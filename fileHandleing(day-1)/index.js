@@ -38,7 +38,7 @@ app.get("/deleteData",async(req,res)=>{
   await schema.findByIdAndDelete(req.query.id).then(()=>{
     res.redirect("/")
   })
-})
+})-m 
 
 app.get("/editData",async(req,res)=>{
   

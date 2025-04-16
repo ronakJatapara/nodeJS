@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-container">
+        <form class="glass-form" action="/addForm" method="POST" enctype="multipart/form-data">
+          <h2 class="form-title">🚀 Add Product</h2>
+      
+          <div class="floating-label">
+            <input type="text" name="productName" required />
+            <label>Product Name</label>
+          </div>
+      
+          <div class="floating-label">
+            <input type="text" name="productPrice" required />
+            <label>Product Price</label>
+          </div>
+
+          <div class="floating-label">
+            <input type="file" name="productImage" required />
+            <label>Product image</label>
+          </div>
+      
+          <button type="submit" class="neon-button">Add Product</button>
+        </form>
+      </div>
+      
+      
+      
+</body>
+</html>

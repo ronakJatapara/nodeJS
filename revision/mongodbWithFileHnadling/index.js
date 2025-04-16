@@ -26,13 +26,14 @@ app.get("/addForm",async(req,res)=>{
     
 })
 app.post("/addStudents",multer,async(req,res)=>{
-    req.body.image = req.file.path
+    req.body.studentImage = req.file.path
    await schema.create(req.body).then(()=>{
        res.redirect("/")
    })
 })
 
 app.get("/deleteData",async(req,res)=>{
+    
     await schema.findByIdAndDelete(req.query.id).then(()=>{
         res.redirect("/")
     })

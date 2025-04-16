@@ -42,7 +42,7 @@ app.get("/editData",async(req,res)=>{
     await schema.findById(req.query.id).then((data)=>{
         res.render("editform",{data})
     })
-
+    
 })
 
 app.post("/updateData",async(req,res)=>{
