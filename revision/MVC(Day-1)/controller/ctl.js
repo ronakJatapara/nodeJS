@@ -3,7 +3,7 @@ const schema = require("../model/firstSchema")
 module.exports.firstPage =async(req,res)=>{
    await schema.find({}).then((student)=>{
     // req.body.id =  student.length+1
-    res.render("index",{student})
+    res.render("index",{student}) 
    })
 }
 module.exports.add = async(req,res)=>{

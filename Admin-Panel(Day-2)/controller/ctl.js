@@ -2,9 +2,43 @@ const schema = require("../model/firstSchema")
 const upload = require("../middleware/multer")
 const fs = require("fs")
 
-module.exports.dashboard = (req,res)=>{
-    res.render("dashboard")
+
+module.exports.login=(req,res)=>{
+   res.render("login")
 }
+module.exports.loginAdmin=async(req,res)=>{
+   
+    let admin =  await schema.findOne({email:req.body.email})
+    if(!admin)
+    {
+        return res.redirect("/")
+    }
+    if(admin.password === req.body.password)
+    {
+        res.cookie("admin",admin)
+        res.redirect("/dashboard")
+    }
+    else{
+        res.redirect("/")
+    }
+    
+}
+module.exports.dashboard = (req,res)=>{
+   if(req.cookies.admin)
+   {
+    res.render("dashboard")
+
+   }
+   else{
+    res.redirect("/")
+   }
+}
+module.exports.logout=(req,res)=>{
+    res.clearCookie("admin");
+    res.redirect("/")
+}
+
+
 module.exports.addAdmin = (req,res)=>{
     res.render("addAdmin")
 }
@@ -34,11 +68,6 @@ module.exports.update = async(req,res)=>{
 
     let updateImage = await schema.findById(req.body.id)
     let img = " "
-
-    // req.file ? img = req.file.path : img = updateImage.image
-    // req.file && fs.unlinkSync(updateImage.image)
-   
-    // req.body.image = img
 
     req.file ? img = req.file.path : img = updateImage.image
     req.file && fs.unlinkSync(updateImage.image)
