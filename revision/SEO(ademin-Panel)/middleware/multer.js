@@ -9,5 +9,5 @@ const Storage = multer.diskStorage({
     }
 })
 
-const upload = multer({storage:Storage}).single("imagae")
+const upload = multer({storage:Storage}).single("image")
 module.exports = upload
