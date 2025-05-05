@@ -26,12 +26,16 @@ passport.use("local", new localSt(
 passport.serializeUser((admin,done)=>{
     return done(null,admin.id)
 })
-passport.deserializeUser((adminId,done)=>{
-    if(adminId)
+passport.deserializeUser(async(adminId,done)=>{
+    let admin = await schema.findById(adminId)
+    if(admin)
     {
-       return done(null,adminId)
+       return done(null,admin)
     }
     else{
         return done(null,false)
     }
 })
+
+
+module.exports = passport

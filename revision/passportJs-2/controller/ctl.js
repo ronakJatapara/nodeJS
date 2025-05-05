@@ -3,6 +3,9 @@ const fs = require("fs")
 module.exports.login = async(req,res)=>{
     res.render("login")
 }
+module.exports.loginAdmin = async(req,res)=>{
+    res.redirect("/dashboard")
+}
 module.exports.dashboard = (req,res)=>{
     res.render("dashboard")
 }
