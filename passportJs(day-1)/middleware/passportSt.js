@@ -1,5 +1,5 @@
 const passport  = require("passport")
-const localSt  =require("passport-local").Strategy
+const localSt  = require("passport-local").Strategy
 const schema = require("../model/firstSchema")
 
 passport.use("local",new localSt(

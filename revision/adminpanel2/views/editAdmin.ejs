@@ -91,10 +91,10 @@
                             <form class="form-horizontal" action="/updateAdmin" method="post" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <h4 class="card-title">Edit Info</h4>
-                                    <div class="form-group row">
-                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">First Name</label>
+                                    <div class="form-group row ">
+                                        <label for="fname" class="col-sm-3 text-right    control-label col-form-label" hidden>First Name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="id" value="<%=edit.id%>" placeholder="First Name Here" name="id">
+                                            <input type="text" class="form-control" id="id" hidden value="<%=edit.id%>" placeholder="First Name Here" name="id">
                                         </div>
                                     </div>
                                     <div class="form-group row">
