@@ -6,10 +6,14 @@ const schema = require("../model/firstSchema")
 passport.use("local", new localSt(
     {usernameField:"email"},
     async(email,password,done)=>{
+        
        let admin = await schema.findOne({email:email})
        if(admin)
        {
-            if(admin.password == password)
+
+        console.log(admin);
+        
+            if(admin.pass == password)
             {
                 return done(null,admin)
             }
