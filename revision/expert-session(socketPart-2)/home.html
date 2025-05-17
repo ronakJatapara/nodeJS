@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+</head>
+<body>
+  <h1>socket.io reqPage</h1>
+  <h3 id="broadcast"></h3>
+  <input type="text" name="" id="name">
+
+  <button type="submit" value="send" onclick="send()">send</button>
+  <div id="timeDate"></div>
+
+  <ul id="myList">
+    <li id="liList"></li>
+  </ul>
+  
+
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    // let socket = io();
+    // // socket.on("myEvent",(msg)=>{
+    // //     // console.log(msg)
+    // //     // document.write(msg)
+    // //     document.getElementById("timeDate").innerHTML = msg
+    // // })
+
+    // socket.on("myBroadcast",function(msg){
+    //    document.getElementById("broadcast").innerHTML = msg
+    // })
+    // function send(){
+    //     let name= document.getElementById("name").value
+    //     socket.emit("userData",name) // CREATE userdata function we can create anything in this function and take name which is 
+    //    // our variable this function pass on server 
+    // }
+
+//     const socket = io("/buy")
+//     socket.on("myEvent",function(msg){
+//     document.getElementById("broadcast").innerHTML = msg
+// })
+
+    const socket = io()
+    function sendMsg()
+    {
+        let msg = document.getElementById("name").value
+        socket.emit("msgSend",msg)
+
+    }
+    socket.on("chat_end",function(msg){
+        let liList = document.getElement("li")
+        liList.innerText = msg
+        let ulList = document.getElementById("msgList")
+        ulList.appendChild(liList)
+    })
+
+</script>
+</html>
