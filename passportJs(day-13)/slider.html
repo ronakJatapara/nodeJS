@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Slider - 5 Slides</title>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    .emotions-slider {
+      padding: 40px 0;
+    }
+
+    .swiper-slide {
+      box-sizing: border-box;
+    }
+
+    .emotions-slider__item {
+      background: #222;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .emotions-slider-item__image video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .emotions-slider-item__text {
+      padding: 20px;
+    }
+
+    .slider-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .slider-nav__item {
+      width: 40px;
+      height: 40px;
+      background: #444;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .slider-pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 5px;
+    }
+
+    .slider-pagination__item {
+      width: 10px;
+      height: 10px;
+      background: #777;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .slider-pagination__item.active {
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<section class="emotions-slider">
+  <div class="swiper emotions-slider__wrapper">
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide">
+        <div class="emotions-slider__item">
+          <div class="emotions-slider-item__image">
+            <video muted playsinline preload="metadata" poster="poster1.jpg">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="emotions-slider-item__text">
+            <h2>Video 1</h2>
+            <p>Intro to our product experience.</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="emotions-slider__item">
+          <div class="emotions-slider-item__image">
+            <video muted playsinline preload="metadata" poster="poster1.jpg">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="emotions-slider-item__text">
+            <h2>Video 1</h2>
+            <p>Intro to our product experience.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Repeat 4 more -->
+      <div class="swiper-slide">
+        <div class="emotions-slider__item">
+          <div class="emotions-slider-item__image">
+            <video muted playsinline preload="metadata" poster="poster2.jpg">
+              <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="emotions-slider-item__text">
+            <h2>Video 2</h2>
+            <p>Behind the scenes look.</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="emotions-slider__item">
+          <div class="emotions-slider-item__image">
+            <video muted playsinline preload="metadata" poster="poster3.jpg">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="emotions-slider-item__text">
+            <h2>Video 3</h2>
+            <p>How it’s made - deep dive.</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="emotions-slider__item">
+          <div class="emotions-slider-item__image">
+            <video muted playsinline preload="metadata" poster="poster4.jpg">
+              <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="emotions-slider-item__text">
+            <h2>Video 4</h2>
+            <p>User testimonials and reactions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="emotions-slider__item">
+          <div class="emotions-slider-item__image">
+            <video muted playsinline preload="metadata" poster="poster5.jpg">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="emotions-slider-item__text">
+            <h2>Video 5</h2>
+            <p>Final thoughts and closing remarks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="slider-pagination"></div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="slider-nav">
+    <div class="slider-nav__item slider-nav__item_prev">&#10094;</div>
+    <div class="slider-nav__item slider-nav__item_next">&#10095;</div>
+  </div>
+</section>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.querySelector(".swiper");
+  const nextEl = document.querySelector(".slider-nav__item_next");
+  const prevEl = document.querySelector(".slider-nav__item_prev");
+  const pagination = document.querySelector(".slider-pagination");
+
+  const swiperInstance = new Swiper(slider, {
+    slidesPerView: 5,
+    spaceBetween: 10,
+    speed: 600,
+    loop: true,
+    centeredSlides: false,
+    navigation: {
+      nextEl,
+      prevEl,
+    },
+    pagination: {
+      el: pagination,
+      type: "bullets",
+      bulletClass: "slider-pagination__item",
+      bulletActiveClass: "active",
+      clickable: true,
+    },
+    on: {
+      slideChangeTransitionStart() {
+        pauseAllVideos();
+      },
+      slideChangeTransitionEnd() {
+        playActiveVideo(swiperInstance);
+      },
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      768: { slidesPerView: 3 },
+      1024: { slidesPerView: 5 }
+    }
+  });
+
+  function pauseAllVideos() {
+    const videos = slider.querySelectorAll("video");
+    videos.forEach((video) => video.pause());
+  }
+
+  function playActiveVideo(swiper) {
+    const activeSlide = swiper.slides[swiper.activeIndex];
+    const video = activeSlide.querySelector("video");
+    if (video) {
+      video.play().catch((e) => console.log("Play error:", e));
+    }
+  }
+
+  setTimeout(() => playActiveVideo(swiperInstance), 500);
+});
+</script>
+
+</body>
+</html>
