@@ -1,0 +1,12 @@
+const express = require("express")
+const router = express.Router()
+
+const ctl =  require("../controller/categoryCtl")
+const multer = require("../middleware/catMulter")
+const passport =  require("../middleware/passportSt")
+
+router.get("/addCat",ctl.addCat)
+router.get("/viewCat",ctl.viewCat)
+router.post("/addCat",multer.single("catImage"),ctl.addCategory)
+
+module.exports = router

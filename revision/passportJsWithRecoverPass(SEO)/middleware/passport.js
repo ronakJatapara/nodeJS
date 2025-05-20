@@ -11,14 +11,14 @@ passport.use("local", new localSt(
         {
           if(admin.pass == password)
           {
-            done(null,admin)
+          return  done(null,admin)
           }
           else{
-            done(null,false)
+           return done(null,false)
           }
         }
         else{
-            done(null,false)
+           return done(null,false)
         }
     }
 ))
@@ -31,10 +31,10 @@ passport.deserializeUser(async(adminId,done)=>{
 
     if(admin)
     {
-       done(null,admin)
+     return  done(null,admin)
     }
     else{
-        done(null,false)
+       return done(null,false)
     }
 })
 

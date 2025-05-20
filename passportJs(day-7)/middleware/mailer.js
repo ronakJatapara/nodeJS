@@ -17,5 +17,4 @@ module.exports.sendOTP=(to,otp)=>{
         text : `your password reset otp is ${otp}`
     }
     trasport.sendMail(mailOptions)
-    // smtp 
 }

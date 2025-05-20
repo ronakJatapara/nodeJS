@@ -1,17 +1,23 @@
+const { log } = require("console")
 const schema = require("../model/firstSchema")
-
+const fs = require("fs")
 
 module.exports.login = (req,res)=>{
     res.render("login")
 }
-module.exports.loginAdmin = (req,res)=>{
-    res.redirect("/dashboard")
+module.exports.loginAdmin = async (req,res)=>{
+    res.redirect("/dashboard")    
     // console.log(req.body);
     
+}
+module.exports.logout = async(req,res)=>{
+    req.session.destroy()
+    res.redirect("/") 
 }
 module.exports.dashboard = (req,res)=>{
     res.render("dashboard")
 }
+
 module.exports.addAdmin = (req,res)=>{
     res.render("addAdmin")
 }
@@ -28,4 +34,33 @@ module.exports.add = async(req,res)=>{
    })
     
 
+}
+module.exports.delete = async(req,res)=>{
+    let singleImage = await schema.findById(req.query.id)
+    fs.unlinkSync(singleImage.image)
+
+    await schema.findByIdAndDelete(req.query.id).then(()=>{
+        res.redirect("/viewAdmin")
+    })
+}
+module.exports.edit = async(req,res)=>{
+    
+    await schema.findById(req.query.id).then((edit)=>{
+        res.render("editAdmin",{edit})
+    })
+
+}
+
+module.exports.update = async(req,res)=>{
+    let updateData = await schema.findById(req.body.id)
+    let img ;
+
+    req.file ? img = req.file.path : img = updateData.image
+    req.file && fs.unlinkSync(updateData.image)
+
+    req.body.image = img
+
+    await schema.findByIdAndUpdate(req.body.id,req.body).then(()=>{
+        res.redirect("/viewAdmin")
+    })
 }

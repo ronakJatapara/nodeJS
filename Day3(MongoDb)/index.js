@@ -18,9 +18,6 @@ app.get("/",async(req,res)=>{
 })
 
 app.post("/addData",async(req,res)=>{
-    // let data = await schema.create(req.body)
-    // res.redirect("/")
-
     await schema.create(req.body).then(()=>{
         res.redirect("/")
     })
