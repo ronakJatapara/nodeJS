@@ -11,7 +11,11 @@ router.get("/logout",ctl.logout)
 router.get("/changePass",passport.checkAuth,ctl.changePass)
 router.post("/changePassword",ctl.changePassword)
 router.get("/profile",ctl.profile)
+router.get("/lostPassEmail",ctl.lostPassEmail)
 router.get("/lostPass",ctl.lostPass)
+router.post("/lostPass",ctl.lostPassword)
+router.post("/varifyPassWord",ctl.varifyPassWord)
+
 
 router.get("/dashboard",passport.checkAuth,ctl.dashboard)
 router.get("/addAdmin",passport.checkAuth,ctl.addAdmin)

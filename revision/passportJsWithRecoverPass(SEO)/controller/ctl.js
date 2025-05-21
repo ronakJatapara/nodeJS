@@ -1,6 +1,7 @@
 const { log } = require("console")
 const schema = require("../model/firstSchema")
 const fs = require("fs")
+const mailer = require("../middleware/mailer")
 
 module.exports.login = (req,res)=>{
     res.render("login")
@@ -49,8 +50,46 @@ module.exports.changePassword = async(req,res)=>{
 module.exports.profile = (req,res)=>{
     res.render("profile")
 }
-module.exports.lostPass =(req,res)=>{
+
+module.exports.lostPassEmail = async(req,res)=>{
+    res.render("lostPassEmail")
+}
+module.exports.lostPass = (req,res)=>{
     res.render("lostPass")
+}
+module.exports.lostPassword = async (req,res)=>{
+    
+    let admin = await schema.findOne({email:req.body.email})
+    if(!admin)
+    {
+        res.redirect("/")
+    }
+   let otp = Math.floor(Math.random()*100000+900000)
+    mailer.sendOtp(req.body.email,otp)
+    req.session.otp = otp
+    req.session.adminData = admin
+
+    res.render("lostPass")
+    
+}
+module.exports.varifyPassWord = async(req,res)=>{
+    let otp = req.session.otp;
+    let admin = req.session.adminData
+
+    if(req.body.otp == otp)
+    {
+          if(req.body.newPass == req.body.confirmPass)
+            {
+                let adminData  = await schema.findByIdAndUpdate(admin._id,{ pass: req.body.newPass,})
+                   adminData && res.redirect("/logout");
+            }   
+            else{
+                console.log("new password and confirm password must be same");
+            } 
+    }
+    else{
+        res.redirect("/")
+    }
 }
 module.exports.dashboard = (req,res)=>{
     res.render("dashboard")
