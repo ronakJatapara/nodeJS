@@ -25,7 +25,8 @@ app.use(passport.initialize())
 
 app.use("/", require("./router/route"))
 app.use("/category",require("./router/categoryRoute"))
-app.use("/subCategory",require("./router/subCategorySchema"))
+app.use("/subCategory",require("./router/subCategoryRoute"))
+app.use("/product",require("./router/productRoute"))
 
 app.listen(port,(err)=>{
     err ? console.log(err) : console.log("server started on port "+port);
