@@ -6,7 +6,7 @@ const schema =  mongoose.Schema({
         type:String,
         required:true
     },
-    city:{
+    gerne:{
         type:String,
         required:true
     }

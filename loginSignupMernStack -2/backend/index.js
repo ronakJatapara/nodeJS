@@ -10,6 +10,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use("/",require("./routes/route"))
+app.use("/student",require("./routes/route"))
 
 app.listen(port,(err)=>{
     err ? console.log(err) : console.log("server started on port " + port); 
