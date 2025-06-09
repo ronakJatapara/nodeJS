@@ -10,7 +10,7 @@ export default function Register() {
     const navigate = useNavigate()
 
     const handleRegister = async ()=>{
-        await axios.post("http://localhost:8888/register",{name,email,password})
+        await axios.post("http://localhost:2004/register",{name,email,password})
         .then((res)=>{
             alert(res.data.msg)
             navigate("/")

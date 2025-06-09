@@ -10,7 +10,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    await axios.post("http://localhost:8888/login", { email, password, role })
+    await axios.post("http://localhost:2004/login", { email, password, role })
       .then((res) => {
         alert(res.data.msg);
         if (res.data.code === 100) {

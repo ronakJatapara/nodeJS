@@ -24,7 +24,7 @@ export default function Dashboard() {
 
   const fetchAdmin = async ()=>{
      try {
-    const res = await axios.get("http://localhost:8888/admin", {
+    const res = await axios.get("http://localhost:2004/admin", {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
@@ -41,7 +41,7 @@ export default function Dashboard() {
     e.preventDefault();
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.post("http://localhost:8888/add-manager", {
+      const res = await axios.post("http://localhost:2004/addManager", {
         name: managerName,
         email: managerEmail,
         password: managerPassword
