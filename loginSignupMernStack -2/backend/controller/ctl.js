@@ -43,3 +43,10 @@ module.exports.login = async (req,res)=>{
     
     
 }
+
+module.exports.allAdmin = async(req,res)=>{
+    await schema.find({}).then((data)=>{
+        return res.status(200).json({msg:"all data is here!",data:data})
+
+    })
+}
