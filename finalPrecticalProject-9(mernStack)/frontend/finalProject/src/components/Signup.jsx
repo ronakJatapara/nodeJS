@@ -30,7 +30,7 @@ function Signup() {
     }
   return (
     <>
-      <div className="signup-container">
+      <div className="signup-container" style={{width:"400px"}}>
       <form className="signup-form" onSubmit={handleSignup} >
         <h2>Create Account</h2>
 

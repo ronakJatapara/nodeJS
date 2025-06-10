@@ -25,7 +25,7 @@ function Login() {
 
   return (
     <>
-     <div className="login-container">
+     <div className="login-container" style={{width:"400px"}}>
       <form className="login-form" onSubmit={handleLogin}>
         <h2>Login</h2>
 
@@ -40,7 +40,8 @@ function Login() {
         </div>
 
         <button type="submit" className="login-button">Login</button>
-        <Link to="/signup">Register</Link>
+        <br />
+        <center><Link to="/signup">Register</Link></center>
       </form>
     </div>
     </>
